@@ -1,0 +1,61 @@
+  [1m[35m (587.0ms)[0m  [1m[35mCREATE DATABASE "momentum-backend_development" ENCODING = 'unicode'[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (422.4ms)[0m  [1m[35mCREATE DATABASE "momentum-backend_test" ENCODING = 'unicode'[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (194.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (40.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3702003575421900105)[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (8.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+Migrating to CreateUsers (20190827181641)
+  [1m[35m (57.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (56.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "location" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190827181641_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (47.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190827181641"]]
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+Migrating to CreateTasks (20190827181901)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (127.4ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" bigserial primary key, "user_id" bigint, "content" character varying, "completed" boolean DEFAULT FALSE, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_4d2a9e4d7e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  ↳ db/migrate/20190827181901_create_tasks.rb:3
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE  INDEX  "index_tasks_on_user_id" ON "tasks"  ("user_id")[0m
+  ↳ db/migrate/20190827181901_create_tasks.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190827181901"]]
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+Migrating to CreateLikes (20190827181948)
+  [1m[35m (37.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (46.4ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "user_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_1e09b5dabf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  ↳ db/migrate/20190827181948_create_likes.rb:3
+  [1m[35m (40.8ms)[0m  [1m[35mCREATE  INDEX  "index_likes_on_user_id" ON "likes"  ("user_id")[0m
+  ↳ db/migrate/20190827181948_create_likes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190827181948"]]
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (17.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Create (1.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-08-27 18:36:31.057526"], ["updated_at", "2019-08-27 18:36:31.057526"]]
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3702003575421900105)[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/markussanders/.rvm/gems/ruby-2.6.1/gems/rake-12.3.3/lib/rake/task.rb:273
