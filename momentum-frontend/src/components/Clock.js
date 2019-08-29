@@ -20,7 +20,8 @@ class Clock extends React.Component {
 
     getTime = () => {
         let dateTime = new Date();
-        let time = `${dateTime.getHours()}:${dateTime.getMinutes()}`;
+        let minutes = String(dateTime.getMinutes()).length == 1 ? `0${minutes}` : dateTime.getMinutes();
+        let time = `${dateTime.getHours()}:${minutes}`;
         this.setState({time});
         this.greet(time);
     }
