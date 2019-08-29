@@ -3,6 +3,7 @@ import './App.css';
 import Clock from './components/Clock';
 import FocusForm from './components/FocusForm';
 import Focus from './components/Focus';
+import valley from './photos/valley.jpg';
 
 class App extends React.Component {
   constructor(props){
@@ -20,8 +21,13 @@ class App extends React.Component {
   render() {
     return ( 
       <div>
-        <Clock currentUser={this.state.currentUser}/>
-        {this.state.mainFocus ? <Focus mainFocus={this.state.mainFocus} /> : <FocusForm setMainFocus={this.setMainFocus} />}
+        <div id="sub-container">
+          <img className="background-image" src={valley}/>
+        </div>
+        <div id="top-container">
+            <Clock currentUser={this.state.currentUser}/>
+            {this.state.mainFocus ? <Focus mainFocus={this.state.mainFocus} setMainFocus={this.setMainFocus} /> : <FocusForm setMainFocus={this.setMainFocus} />}
+        </div>
       </div>
     )
   }
