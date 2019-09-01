@@ -20,7 +20,8 @@ class Clock extends React.Component {
 
     getTime = () => {
         let dateTime = new Date();
-        let minutes = String(dateTime.getMinutes()).length == 1 ? `0${minutes}` : dateTime.getMinutes();
+        let minutes = dateTime.getMinutes();
+        minutes = String(minutes).length == 1 ? `0${minutes}` : minutes;
         let time = `${dateTime.getHours()}:${minutes}`;
         this.setState({time});
         this.greet(time);
@@ -36,7 +37,7 @@ class Clock extends React.Component {
         return (
             <div id="greeting-clock-div">
                 <h2 id="clock">{this.state.time}</h2>
-                <h3 id="greeting">{this.state.greeting}</h3>
+                <h3 id="greeting">{this.state.greeting}<button id="more-options" onClick={() => console.log('CLICKED')}>•••</button></h3>
             </div>
         )
     }
