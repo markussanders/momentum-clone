@@ -8,6 +8,7 @@ class Clock extends React.Component {
             currentUser: this.props.currentUser,
             greeting: '',
             time: '',
+            renderDropdown: false,
         }
     }
 
@@ -33,11 +34,31 @@ class Clock extends React.Component {
         this.state.currentUser.name ? this.setState({greeting: `${greeting}, ${this.state.currentUser.name}.`}) : this.setState({ greeting });
     }
 
+    renderDropdown = () => {
+        console.log('GOT HERE')
+        return (
+            <ul>
+                <li onClick={() => this.setMantra()}>Show today's mantra</li>
+                <li onClick={() => console.log('update currentUser name using prop function')}>Edit your name</li>
+            </ul>
+        )
+    }
+
+    setMantra = () => {
+        this.setState({greeting: 'You are enough.'});
+    }
+
     render() {
         return (
             <div id="greeting-clock-div">
                 <h2 id="clock">{this.state.time}</h2>
-                <h3 id="greeting">{this.state.greeting}<button id="more-options" onClick={() => console.log('CLICKED')}>•••</button></h3>
+                <h3 id="greeting">{this.state.greeting}<button id="more-options" onClick={() => this.setState({renderDropdown: !this.state.renderDropdown})}>•••</button></h3>
+                {this.state.renderDropdown ?
+                  <ul>
+                    <li onClick={() => this.setMantra()}>Show today's mantra</li>
+                    <li onClick={() => console.log('update currentUser name using prop function')}>Edit your name</li>
+                  </ul>
+                : null}
             </div>
         )
     }
