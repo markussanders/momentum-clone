@@ -37,9 +37,9 @@ class Clock extends React.Component {
     renderDropdown = () => {
         console.log('GOT HERE')
         return (
-            <ul>
-                <li onClick={() => this.setMantra()}>Show today's mantra</li>
-                <li onClick={() => console.log('update currentUser name using prop function')}>Edit your name</li>
+            <ul id="more-options-list">
+                <li className="more-options-item" onClick={() => this.setMantra()}>Show today's mantra</li>
+                <li className="more-options-item" onClick={() => console.log('update currentUser name using prop function')}>Edit your name</li>
             </ul>
         )
     }
@@ -54,9 +54,9 @@ class Clock extends React.Component {
                 <h2 id="clock">{this.state.time}</h2>
                 <h3 id="greeting">{this.state.greeting}<button id="more-options" onClick={() => this.setState({renderDropdown: !this.state.renderDropdown})}>•••</button></h3>
                 {this.state.renderDropdown ?
-                  <ul>
-                    <li onClick={() => this.setMantra()}>Show today's mantra</li>
-                    <li onClick={() => console.log('update currentUser name using prop function')}>Edit your name</li>
+                  <ul id="more-options-list">
+                    <li className="more-options-item" onClick={() => this.setMantra()}>Show today's mantra</li>
+                    <li className="more-options-item" onClick={() => console.log('update currentUser name using prop function')}>Edit your name</li>
                   </ul>
                 : null}
             </div>
